@@ -91,7 +91,8 @@ button {
 @media (prefers-color-scheme: dark) {
   :root {
     color: #f6f6f6;
-    background-color: #2f2f2f;
+    /*background-color: #2f2f2f;*/
+    background-color: #faf0ca;
   }
 
   a:hover {
@@ -131,4 +132,51 @@ button {
   top: 40%;
   left: 45%;
   position: absolute;
+}
+
+.mug {
+  height: 210px;
+  width: 220px;
+  border: 10px solid #030303;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  border-radius: 20px 20px 60px 60px;
+  overflow: hidden;
+}
+
+.coffee {
+  width: 300px;
+  height: 300px;
+  background: rgba(128, 82, 14, 0.9);  
+}
+
+.handle {
+  content: "";
+  position: absolute;
+  height: 80px;
+  width: 60px;
+  border: 10px solid #030303;
+  border-left: none;
+  right: 210px;
+  top: 230px;
+  border-radius: 0px 30px 30px 0px;
+}
+
+.platform {
+  position: absolute;
+  content: "";
+  height: 10px;
+  width: 300px;
+  background-color: #030303;
+  left: 250px;
+  bottom: 185px;
+  border-radius: 10px;
+}
+
+.conti {
+  position: absolute;
+  left: 45%;
+  top: 430px;
 }
