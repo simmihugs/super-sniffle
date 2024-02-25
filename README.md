@@ -7,3 +7,4 @@
 `cargo tauri build`
 
 
+![screenshot](screenshot.png "Test app")
