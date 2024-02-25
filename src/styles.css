@@ -147,9 +147,21 @@ button {
 }
 
 .coffee {
-  width: 300px;
-  height: 300px;
+  width: 240px;
+  height: 200px;
   background: rgba(128, 82, 14, 0.9);  
+  border-top: 15px solid #d6baa1;
+}
+
+.tear {
+  left: 50%;
+  width: 25px;
+  height: 25px;
+  border-radius: 0 50% 50% 50%;
+  border: 1px solid rgba(128, 82, 14, 0.9);
+  /* transform: rotate(45deg); */
+  margin-top: 20px;
+  background: #d6baa1;
 }
 
 .handle {

@@ -4,7 +4,11 @@
   
 
   const fill = {
-    Dont: 0, Up: 1, Paused: 2,
+    Dont: 0, Up: 1, Paused: 2, End: 3,
+  }
+
+  function console_log(stuff) {
+    invoke('log_it', { message: stuff })
   }
   
   let time = new Date();
@@ -14,28 +18,39 @@
   $: {
     seconds = 1
     if (state == fill.Up) {
+      console_log(`${Math.floor(100 - percent)}%`)
       percent += seconds/10
-      if (percent >= 100) {
-	state = fill.Dont
+      if (percent >= 90) {
+	state = fill.End	
       }
+    } 
+  }
+  
+  $: suko = () => {
+    if (state == fill.Up) {
+      return "Stop"
+    } else if (state == fill.End) {
+      return "Restart"
+    } else if (state == fill.Paused) {
+      return "Resume"
+    } else {
+      return "Start"
     }
   }
-  
-  function console_log(stuff) {
-    invoke('log_it', { message: stuff })
-  }
-  
+
   function start_stop() {
     if (state == fill.Up) {
       state = fill.Paused
     } else if (state == fill.Paused) {
-      state = fill.Dont
+      state = fill.Up
+    } else if (state == fill.End) {
       percent = 0
+      state = fill.Up
     } else {
       state = fill.Up
     }
   }
-
+  
   onMount(() => {
     const interval = setInterval(() => {
       time = new Date();
@@ -51,6 +66,8 @@
 <div class="rows">
   <div>
     <div class="mug">
+      <div class="tear"
+	   style:transform="translateY({100 - seconds}%)"/>
       <div class="coffee"
 	   style:transform="translateY({100 - percent}%)"/>
     </div>  
@@ -59,8 +76,7 @@
   </div>
   <div class="conti">  
     <button
-      on:click={start_stop}>{ state == fill.Up ? "Stop" : state ==
-      fill.Dont ? "Start" : "Reset" }</button>
+      on:click={start_stop}>{suko()}</button>
   </div>
 </div>  
 
