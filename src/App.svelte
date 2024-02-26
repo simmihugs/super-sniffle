@@ -1,9 +1,9 @@
 <script>
-  import Mug from './lib/Mug.svelte'
-
+  import Card from './lib/Card.svelte'
 </script>
 
+
 <main class="container">
-  <Mug />
+  <Card />
 </main>
 
